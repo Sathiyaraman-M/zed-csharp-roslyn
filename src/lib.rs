@@ -1,19 +1,12 @@
-use std::env;
+use zed_extension_api::{self as zed, Command, LanguageServerId, Result, Worktree};
 
-use zed_extension_api::{self as zed};
-use zed_extension_api::{Command, LanguageServerId, Result, Worktree};
+const CACHE_BINARY: &str = "/Users/sathyar/Developer/Configuration/roslyn-language-server";
 
-const CACHE_BINARY_DLL: &str = "/Users/sathyar/Developer/Configuration/Roslyn/content/LanguageServer/neutral/Microsoft.CodeAnalysis.LanguageServer.dll";
-
-struct CsharpRoslynExtension {
-    cached_binary_path: Option<String>,
-}
+struct CsharpRoslynExtension;
 
 impl zed::Extension for CsharpRoslynExtension {
     fn new() -> Self {
-        Self {
-            cached_binary_path: Some(CACHE_BINARY_DLL.to_string()),
-        }
+        Self {}
     }
 
     fn language_server_command(
@@ -21,26 +14,11 @@ impl zed::Extension for CsharpRoslynExtension {
         _language_server_id: &LanguageServerId,
         worktree: &Worktree,
     ) -> Result<Command> {
-        let cached_binary_path = self
-            .cached_binary_path
-            .as_ref()
-            .ok_or("Cached binary path not found")?;
-        let dotnet_command =
-            env::var("DOTNET_ROOT").unwrap_or("/usr/local/share/dotnet".to_string());
-        let extension_log_directory = format!("{}{}", worktree.root_path(), "/.zed/csharp-roslyn");
-        let command = Command {
-            command: dotnet_command,
-            args: vec![
-                cached_binary_path.to_string(),
-                "--stdio".to_string(),
-                "--logLevel".to_string(),
-                "Information".to_string(),
-                "--extensionLogDirectory".to_string(),
-                extension_log_directory,
-            ],
-            env: Default::default(),
-        };
-        Ok(command)
+        Ok(Command {
+            command: CACHE_BINARY.to_string(),
+            args: vec![],
+            env: worktree.shell_env(),
+        })
     }
 }
 
