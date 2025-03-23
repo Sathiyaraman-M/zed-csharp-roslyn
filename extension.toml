@@ -1,0 +1,16 @@
+id = "csharp-roslyn"
+name = "C# (Roslyn)"
+version = "0.0.1"
+schema_version = 1
+authors = ["Sathiyaraman M <sathiyaraman.m@gmail.com>"]
+description = "C# extension using Roslyn"
+repository = "https://github.com/Sathiyaraman-M/csharp-roslyn"
+
+[language_servers.roslyn]
+name = "Roslyn"
+languages = ["CSharp"]
+
+[grammars.c_sharp]
+repository = "https://github.com/tree-sitter/tree-sitter-c-sharp"
+commit = "dd5e59721a5f8dae34604060833902b882023aaf"
+# commit = "b5eb5742f6a7e9438bee22ce8026d6b927be2cd7"
