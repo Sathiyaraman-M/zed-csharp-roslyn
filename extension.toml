@@ -4,7 +4,7 @@ version = "0.0.1"
 schema_version = 1
 authors = ["Sathiyaraman M <sathiyaraman.m@gmail.com>"]
 description = "C# extension using Roslyn"
-repository = "https://github.com/Sathiyaraman-M/csharp-roslyn"
+repository = "https://github.com/Sathiyaraman-M/zed-csharp-roslyn"
 
 [language_servers.roslyn]
 name = "Roslyn"
