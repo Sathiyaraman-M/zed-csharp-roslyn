@@ -57,7 +57,7 @@ impl CsharpRoslynExtension {
         );
 
         let release = zed::latest_github_release(
-            "SofusA/roslyn-language-server",
+            "SofusA/csharp-language-server",
             GithubReleaseOptions {
                 require_assets: true,
                 pre_release: false,
@@ -71,8 +71,8 @@ impl CsharpRoslynExtension {
             .find(|asset| asset.name == release_name)
             .ok_or_else(|| format!("Not found: {}", release_name))?;
 
-        let version_dir = format!("roslyn-lsp-{}", release.version);
-        let binary_path = format!("{version_dir}/roslyn-language-server");
+        let version_dir = format!("csharp-lsp-{}", release.version);
+        let binary_path = format!("{version_dir}/csharp-language-server");
 
         if !fs::metadata(&binary_path).map_or(false, |stat| stat.is_file()) {
             zed::set_language_server_installation_status(
@@ -122,7 +122,7 @@ impl CsharpRoslynExtension {
             Os::Windows => "zip",
             _ => "tar.gz",
         };
-        format!("roslyn-language-server-{suffix}.{extension}")
+        format!("csharp-language-server-{suffix}.{extension}")
     }
 }
 
