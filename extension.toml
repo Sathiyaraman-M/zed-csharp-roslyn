@@ -1,6 +1,6 @@
 id = "csharp-roslyn"
 name = "C# (Roslyn)"
-version = "0.0.1"
+version = "0.1.0"
 schema_version = 1
 authors = ["Sathiyaraman M <sathiyaraman.m@gmail.com>"]
 description = "C# extension using Roslyn"
