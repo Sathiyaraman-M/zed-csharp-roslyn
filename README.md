@@ -1,6 +1,6 @@
 ## C# (Roslyn)
 
-This is a Zed extension to provide C# through the new Roslyn LSP. Currently it uses [roslyn-language-server](https://github.com/SofusA/roslyn-language-server), which is a wrapper around the official Roslyn Language Server.
+This is a Zed extension to provide C# through the new Roslyn LSP. Currently it uses [csharp-language-server](https://github.com/SofusA/csharp-language-server), which is a wrapper around the official Roslyn Language Server.
 
 It doesn't support Razor-specific services as of now, since it requires another LSP (rzls) and it will be supported in the future.
 
